@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using UniversityConsoleApp.Models;
+using UniversityConsoleApp.BL;
+using UniversityConsoleApp.Interfaces;
+
+namespace UniversityConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StudentManager studentManager = new StudentManager();
+            List<Person> students = studentManager.Create(21, 18);
+            studentManager.Print(students);
+            TeacherManager teacherManager = new TeacherManager();
+            List<Person> teachers = teacherManager.Create(5, 19);
+            teacherManager.Print(teachers);
+            UniversityManager.SwapWithStudent(teachers, students);
+            teacherManager.Print(teachers);
+            UniversityManager.SwapWithTeachers(students, teachers);
+            studentManager.Print(students);
+        }
+    }
+}
